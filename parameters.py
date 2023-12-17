@@ -1,23 +1,49 @@
-decision_tree = {
-    'start': {
-        'question': 'Do you want to go left or right?',
-        'options': {
-            'left': 'You chose left!',
-            'right': 'You chose right!',
-        }
+task_decision_tree = {
+    "NAME": {
+        'question': 'Nombre del fondo:',
+        'next_state': "STATE",
     },
-    'left': {
-        'question': 'Do you want to go up or down?',
-        'options': {
-            'up': 'You chose up!',
-            'down': 'You chose down!',
-        }
+    "STATE": {
+        'question': 'Estado del fondo:',
+        'options': ["Sin empezar", "En proceso", "Lista"],
+        'next_state': "PROJECT",
     },
-    'right': {
-        'question': 'Do you want to jump or crawl?',
-        'options': {
-            'jump': 'You chose to jump!',
-            'crawl': 'You chose to crawl!',
+    "PROJECT": {
+        'question': 'Proyecto del fondo:',
+        'options': ["Etapa Olé", "Etapa Zamba", "Etapa Gringo", "Etapa Local", "Etapa Parcero", "Etapa Vato", "Miscelaneo", "Etapa HolyLand"],
+        'next_state': "PRIORITY",
+    },
+    "PRIORITY": {
+        'question': 'Prioridad del fondo:',
+        'options': ["Baja", "Media", "Alta"],
+        'next_state': "TYPE",
+    },
+    "TYPE": {
+        'question': 'Tipo del fondo:',
+        'options': ["Intro", "Connect", "Otros"],
+        'next_state': "FUND",
+    },
+    "FUND": {
+        'question': 'Conexión con:',
+        'next_state': None,  # End of the decision tree
+    }
+}
+
+menu_decision_tree = {
+    "start": {
+        "question": "User name",
+        "next_state": "Password"
+    },
+    "password":{
+        "question": "Password",
+        "next_state": "menu"
+    },
+    "menu": {
+        "question": "¿Que quieres hacer?",
+        "options": {
+            "task": task_decision_tree,
+            "next_state": "NAME"
         }
     }
+
 }

@@ -15,9 +15,9 @@ def access_keyboard():
 def trader_keyboard():
     options = [
         [InlineKeyboardButton("Buy", callback_data="/buy"),
-        InlineKeyboardButton("Sell", callback_data="/sell")],
-        InlineKeyboardButton("Back", callback_data="/back"),
-    ]
+        InlineKeyboardButton("Sell", callback_data="/sell"),
+        InlineKeyboardButton("Back", callback_data="/back")
+        ]]
     reply_markup = InlineKeyboardMarkup(options)
     return reply_markup
 

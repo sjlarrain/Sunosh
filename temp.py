@@ -6,19 +6,11 @@ from parameters import menu_decision_tree, task_decision_tree
 
 # Function to generate a keyboard based on the current node in the decision tree
 def generate_keyboard(node, context):
-    print(f"Keyboard", context.user_data["written"])
-    if not context.user_data["written"]:
-        decision_tree = context.user_data.get("menu", menu_decision_tree)
-        print(decision_tree, "Decision")
-        if "options" in decision_tree.keys():
-            options = decision_tree[node]['options'].keys()
-            keyboard = [[option] for option in options]
-            context.user_data["written"] = False
-            return ReplyKeyboardMarkup(keyboard, one_time_keyboard=True)
-    else:
-        context.user_data["written"] = True
-        return None
-
+    if "options" in decision_tree.keys():
+        options = decision_tree[node]['options'].keys()
+        keyboard = [[option] for option in options]
+        return ReplyKeyboardMarkup(keyboard, one_time_keyboard=True)
+    
 # Command handler to start the decision tree
 async def start_command(update, context):
     context.user_data["menu"] = menu_decision_tree

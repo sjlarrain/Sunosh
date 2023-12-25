@@ -4,9 +4,11 @@ from secrets import TOKEN
 from commands import (start_command, price_command, button_handler, error_handler,
                       authentification
 )
+from trader import ExchangeManager
 
 def main():
     print("App running")
+    trader = ExchangeManager("btc-clp")
     app = Application.builder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start_command))

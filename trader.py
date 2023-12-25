@@ -1,7 +1,5 @@
 from exchanges import Exchange
 
-
-
 class ExchangeManager:
     def __init__(self, market):
         self.market = market
@@ -12,7 +10,7 @@ class ExchangeManager:
         self.exchage.get_balances()
     
     def get_price(self):
-        self.get_price("asks")
+        self.exchange.get_price("asks")
     
     # def buy_cripto(self):
     #     self.exchange.buy_crypto(10000)

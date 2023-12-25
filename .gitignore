@@ -16,3 +16,4 @@ files/
 *.csv
 
 secrets.py
+exchanges.py
